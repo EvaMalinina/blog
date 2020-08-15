@@ -1,13 +1,25 @@
+Under construction ⚡️
+
 Simple blog app
 
 ## Getting Started
 
-First, run the development server:
+Clone the repository:
+```
+git clone https://github.com/EvaMalinina/blog.git
+
+```
+
+First, run:
+```
+npm install
+```
+This command will install all necessary dependencies.
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
