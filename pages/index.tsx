@@ -3,9 +3,9 @@ import axios from 'axios'
 import { GetServerSideProps } from 'next'
 import Layout from '../components/layout'
 import styled from 'styled-components'
-import Link from 'next/link'
-import { Posts } from '../models/posts'
 import { IPost } from '../models/post'
+import Posts from './posts/posts'
+import Link from 'next/link'
 
 const Wrapper = styled.section`
   padding: 4em;
@@ -17,6 +17,9 @@ export default function Home({ allPostsData }: { allPostsData: IPost[] }) {
     <Layout home>
       <Wrapper>
         <p>Hello, traveler!</p>
+        <Posts />
+        <hr />
+        <h2>Data by getServerSideProps SSR</h2>
         <ul>
           {allPostsData.map(({ id, title, body }) => (
             <li key={id}>
@@ -36,6 +39,6 @@ export default function Home({ allPostsData }: { allPostsData: IPost[] }) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await axios.get(`${process.env.API_URL}posts`)
-  const allPostsData: Posts = res.data
+  const allPostsData: IPost[] = res.data
   return { props: { allPostsData } }
 }
